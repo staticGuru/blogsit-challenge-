@@ -1,15 +1,28 @@
+import React from 'react';
 import './App.css';
+import Home from './containers/Home';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ContactUS from './containers/ContactUS';
+import Post from './containers/Post';
 
 function App() {
   return (
-    <div className="App">
-      <img className="coolLogo" src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80" alt="my really cool logo" />
-      <header className="App-header">
-        <p>
-          My really cool blog site
-        </p>
-      </header>
-    </div>
+
+    <Router>
+      <div className="App">
+        <Header />
+        <Hero />
+
+        <Route path="/" exact component={Home} />
+        <Route path="/contact-us"  component={ContactUS}/>
+        <Route path="/post/:slug" component={Post} />
+
+        
+      </div>
+    </Router>
+    
   );
 }
 
